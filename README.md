@@ -1,11 +1,9 @@
 # Proyecto IV
 
 ## Descripción del problema
-La contaminación del aire en las ciudades en un problema para la salud de los habitantes de las mismas. Granada, a pesar de su tamaño, es una de las ciudades con peor calidad de aire de España. El ayuntamiento de Granada busca reducir el número de emisiones de CO2 para conseguir tener una ciudad con una calidad de aire limpio y que no afecte a la salud de sus ciudadanos. 
+Las líneas de autobuses que pasan por zonas universitarias o zonas céntricas de la ciudad de Granada se llenan y en algunas ocasiones los autobuses no paran para recoger a más gente. Esto supone una pérdida de tiempo para los usuarios ya que o tienen que esperar al siguiente o tienen que escoger otro medio de transporte para llegar a su destino. Además, hay veces que algunos de los autobuses, por motivos técnicos, ponen el cartel de fuera de servicio. Estos autobuses también son contabilizados por los escasos letreros digitales que indican el tiempo que tarda un autobús en llegar a la parada.
 
-Ya se ha demostrado con diversos [estudios](https://ctagr.es/wp-content/uploads/Documentos/RedTransporte/estudio.pdf) que el transporte público emite un tercio de las emisiones producidas en la ciudad y alrededores, significando que éste es mucho más eficiente que el uso de vehículos privados. Esto no quiere decir que no haya margen de mejora. El ayuntamiento ya ha lanzado su plan de bajas emisiones.
-
-Las empresas de transporte necesitan reducir sus emisiones realizando el cambio de los autobuses contaminantes a autobuses eléctricos de emisiones 0, pero el coste es muy grande y el cambio ha de ser de forma gradual. Primero necesitan cambiar los autobuses de las líneas que más contaminan.
+El problema que tiene los usuarios del transporte en autobús urbano es la falta de información que se dispone del estado del autobús que están esperando y si van a poder subirse a él.
 
 ## Documentación
 - [Configuración de git](docs/configuracion-git.md).
