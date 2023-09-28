@@ -1,9 +1,9 @@
 # Proyecto IV
 
 ## Descripción del problema
-Las líneas de autobuses que pasan por zonas universitarias o zonas céntricas de la ciudad de Granada se llenan y en algunas ocasiones los autobuses no paran para recoger a más gente. Esto supone una pérdida de tiempo para los usuarios ya que o tienen que esperar al siguiente o tienen que escoger otro medio de transporte para llegar a su destino. Además, hay veces que algunos de los autobuses, por motivos técnicos, ponen el cartel de fuera de servicio. Estos autobuses también son contabilizados por los escasos letreros digitales que indican el tiempo que tarda un autobús en llegar a la parada.
+Los usuarios que quieran moverse entre municipios con transporte público tienen diferentes opciones. Una de esas opciones es el autobús. En la actualidad, se dispone de poca información para realizar un trayecto en una línea de autobús de la Red de Consorcios de Transporte de Andalucía ya que dicha información se encuentra en las diferentes marquesinas de las paradas y, como se ha comentado, es escasa.
 
-El problema que tiene los usuarios del transporte en autobús urbano es la falta de información que se dispone del estado del autobús que están esperando y si van a poder subirse a él.
+El problema que tienen los usuarios del transporte en autobús entre municipios es la falta de información de las posibles paradas que se pueden realizar en el trayecto con los posibles transbordos que se pueden efectuar en el recorrido.
 
 ## Documentación
 - [Configuración de git](docs/configuracion-git.md).
