@@ -9,3 +9,6 @@ Dados los datos de los trayectos de las líneas de autobús de la [Red de Consor
 
 ## Documentación
 - [Configuración de git](docs/configuracion-git.md).
+- [Usuarios de la aplicación](docs/usuarios.md).
+- [Historias de usuario](docs/historias-usuario.md).
+- [Milestones](docs/milestones.md).
