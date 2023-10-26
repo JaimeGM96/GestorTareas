@@ -4,18 +4,28 @@ use chrono::NaiveTime;
 type NumParada = i32;
 type NumLinea = i32;
 
+/**
+ * Linea de autobús (en un único sentido).
+ */
 struct Linea {
 	id: NumLinea,
 	paradas: Vec<NumParada>,
 	horarios: Map<NumParada, Vec<NaiveTime>>,
 }
 
+/**
+ * Acción de subir/bajar de un autobús.
+ */
 struct Transbordo {
 	linea: NumLinea,
 	parada: NumParada,
 	hora: NaiveTime,
 }
 
+/**
+ * Una ruta es una consecución de subidas/bajadas
+ * de autobuses.
+ */
 type Ruta = Vec<Transbordo>;
 
 struct BuscadorRutas {
