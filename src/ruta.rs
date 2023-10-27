@@ -1,3 +1,6 @@
+#![allow(dead_code)]
+#![allow(unused_variables)]	// quitar cuando se implemente
+
 use std::collections::HashMap as Map;
 use chrono::NaiveTime;
 
@@ -34,15 +37,20 @@ struct BuscadorRutas {
 }
 
 impl BuscadorRutas {
-	pub fn new(lineas: Vec<Linea>) -> Lineas {
-
+	pub fn new(lineas: Vec<Linea>) -> Self {
+		Self {
+			lineas: Map::new(),
+			paradas: Map::new(),
+		}
 	}
 
 	pub fn encuentra(hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Vec<Ruta>> {
 		// lista de todas las posibles rutas desde parada_origen hasta parada_destino a partir de una hora en concreto
+		None
 	}
 }
 
 fn consulta_mas_rapida(buscador: &BuscadorRutas, hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Ruta> {
 	// min( ruta.back.hora - ruta.front.hora )
+	None
 }
