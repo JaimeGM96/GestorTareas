@@ -9,6 +9,8 @@ type NumLinea = i32;
 
 /**
  * Linea de autobús (en un único sentido).
+ * 
+ * Entidad, al estar unequivocamente identificado.
  */
 struct Linea {
 	id: NumLinea,
@@ -18,6 +20,9 @@ struct Linea {
 
 /**
  * Acción de subir/bajar de un autobús.
+ * 
+ * Objeto valor, al ser inmutable y no estar
+ * identificado unequivocamente.
  */
 struct Transbordo {
 	linea: NumLinea,
@@ -31,6 +36,13 @@ struct Transbordo {
  */
 type Ruta = Vec<Transbordo>;
 
+/**
+ * Información necesaria indexada para poder
+ * buscar rutas entre dos paradas.
+ * 
+ * Objeto valor, al ser inmutable y no estar
+ * identificado unequivocamente.
+ */
 struct BuscadorRutas {
 	lineas: Map<NumLinea, Linea>,
 	paradas: Map<NumParada, Vec<NumLinea>>,
@@ -50,6 +62,13 @@ impl BuscadorRutas {
 	}
 }
 
+/**
+ * Devuelve la ruta más rápida entre dos paradas
+ * a partir de una hora en concreto.
+ * 
+ * Servicio, al no estar asociado particularmente
+ * a un objeto del dominio.
+ */
 fn consulta_mas_rapida(buscador: &BuscadorRutas, hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Ruta> {
 	// min( ruta.back.hora - ruta.front.hora )
 	None
