@@ -12,3 +12,5 @@ Dados los datos de los trayectos de las líneas de autobús de la [Red de Consor
 - [Usuarios de la aplicación](docs/usuarios.md).
 - [Historias de usuario](docs/historias-usuarios.md).
 - [Milestones](docs/milestones.md).
+- [Gestor de dependencias](docs/gestor-dependencias.md).
+- [Gestor de tareas](docs/gestor-tareas.md).
