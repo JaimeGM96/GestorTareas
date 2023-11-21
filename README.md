@@ -8,9 +8,9 @@ El problema que tienen los usuarios del transporte en autobús entre municipios 
 Dados los datos de los trayectos de las líneas de autobús de la [Red de Consorcios de Transporte de Andalucía](https://api.ctan.es/doc/#api-Corredores-ObtieneBloquesCorredor), podremos paliar este problema procesando la información poco estructurada de la que disponemos y ofreciendo cálculos de rutas entre municipios con los transbordos necesarios.
 
 ## Descripción de la solución
-Para alcanzar la solución, se hace uso de la clase BuscadorRutas que es la encargada de alberga la lógica de negocio.
+Para alcanzar la solución, se hace uso de la clase BuscadorRutas que es la encargada de albergar la lógica de negocio.
 
-Para comprobar que la sintaxis es correcta, se puede ejecutar el siguiente comando
+Para comprobar que la sintaxis es correcta, se puede ejecutar el siguiente comando:
 ```bash
 cargo check
 ```
