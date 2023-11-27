@@ -7,6 +7,9 @@ El problema que tienen los usuarios del transporte en autobús entre municipios 
 
 Dados los datos de los trayectos de las líneas de autobús de la [Red de Consorcios de Transporte de Andalucía](https://api.ctan.es/doc/#api-Corredores-ObtieneBloquesCorredor), podremos paliar este problema procesando la información poco estructurada de la que disponemos y ofreciendo cálculos de rutas entre municipios con los transbordos necesarios.
 
+## Elección de herramientas
+Para la elección del gestor de dependencias y del gestor de tareas, se han tenido en cuenta una serie de criterios que se pueden consultar en la documentación del proyecto. La elección de los mismos ha sido, en gran medida, por ser el estándar del lenguaje pero el resto de criterios también se han tenido en cuenta.
+
 ## Descripción de la solución
 Para alcanzar la solución, se hace uso de la clase BuscadorRutas que es la encargada de albergar la lógica de negocio.
 
