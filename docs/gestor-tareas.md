@@ -14,5 +14,8 @@ Además de ser un gestor de dependencias, Cargo nos da la posibilidad de gestion
 ### [Cargo-make](https://sagiegurari.github.io/cargo-make/)
 Cargo make es un gestor de tareas de Rust que se integra con Cargo. Sigue el estándar de Rust y es muy eficiente. Recibe mantenimiento frecuentemente y nos proporciona una serie de herramientas para hacer que nuestras tareas sean más seguras.
 
+### [make](https://www.gnu.org/software/make/)
+Make es una herramienta que nos permite automatizar tareas en cualquier lenguaje de programación. Es muy ligera, lo que hace que sea muy eficiente. Está desarrollada por GNU, lo que nos asegura que se mantenga a largo plazo.
+
 ## Elección
 El gestor de dependencias que se ha decidido usar es Cargo ya que, además de cumplir con todos los criterios, si podemos elegir una única herramienta que realice todas las funciones que necesitamos, reducimos la deuda técnica que nos puede causar el tener más herramientas.
