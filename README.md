@@ -15,7 +15,7 @@ Para alcanzar la solución, se hace uso de la clase BuscadorRutas que es la enca
 
 Para comprobar que la sintaxis es correcta, se puede ejecutar el siguiente comando:
 ```bash
-cargo check check
+cargo check
 ```
 
 ## Documentación
