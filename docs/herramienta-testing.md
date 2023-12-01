@@ -12,3 +12,6 @@ Necesitamos que la herramienta de testing que elijamos cumpla los siguientes cri
 
 ### [Cargo](https://doc.rust-lang.org/cargo/)
 Cargo dispone de su propio test runner. Como hemos visto antes, es la herramienta éstandar del lenguaje Rust para realizar tareas como la gestión de dependencias, la compilación del código, etc. Únicamente debemos colocar la etiqueta #[test] encima de la función que queramos establecer como un test y, cuando ejecutemos el comando `cargo test`, se ejecutarán todos los tests que hayamos escrito. Es una herramienta rápida y, al ser la herramienta éstandar del lenguaje, recibe mantenimiento frecuentemente, con lo que minimizaremos la deuda técnica. Además de todo lo nombrado, como habíamos comentado en la gestión de dependencias y de tareas, es una herramienta segura.
+
+### [cargo-nextest](https://nexte.st/)
+Cargo-nextest es un test runner que amplía las funcionalidades de Cargo para la ejecución, validación y visualización de los tests. Es 3 veces más rápido que Cargo porque tiene un modelo de ejecución diferente al de Cargo. Una de las diferencias es la ejecución en paralelo de los tests. Es un proyecto que recibe actualizaciones con frecuencia y dispone de mecanismos de seguridad.
