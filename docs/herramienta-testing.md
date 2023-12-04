@@ -1,6 +1,15 @@
 # Metodología y herramientas de testing
 ## Elección de metodología
+En el desarrollo de software, es imprescindible realizar tests para comprobar que todo el código que se escriba sea correcto. Para ello, existen diferentes metodologías que nos indican cómo se tiene que seguir el proceso de desarrollo de tests. A continuación se van a exponer las diferentes metodologías de desarrollo de tests basadas en el principio F.I.R.S.T. (Fast, Independent, Repeatable, Self-validating y Timely).
 
+### [TDD](https://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas)
+El TDD es una metodología de desarrollo de software que consiste en escribir primero los tests y, a continuación, escribir el código que haga que los tests pasen. Una característica de esta metodología es evitar escribir código inneceasario, lo que nos permite mantener el código más limpio. 
+
+### [BDD](https://es.wikipedia.org/wiki/Desarrollo_guiado_por_comportamiento)
+El BDD, al igual que TDD, es una metodología basada en escribir los tests primero. La diferencia que existe entre ambas metodologías es que, en el BDD, los tests se escriben en un lenguaje más cercano al lenguaje natural, permitiendo que todos los miembros de un equipo, tanto desarrolladores como no, puedan participar en el desarrollo del dominio.
+
+## Elección
+Para este proyecto, se va a hacer uso de BDD ya que, al describir los tests con lenguaje natural, resulta más sencillo cubrir todos los casos de uso y, por tanto, se consigue una mayor cobertura de tests.
 
 ## Elección de herramientas
 ## Criterios de selección
