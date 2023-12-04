@@ -24,3 +24,6 @@ Cargo dispone de su propio test runner. Como hemos visto antes, es la herramient
 
 ### [cargo-nextest](https://nexte.st/)
 Cargo-nextest es un test runner que amplía las funcionalidades de Cargo para la ejecución, validación y visualización de los tests. Es 3 veces más rápido que Cargo porque tiene un modelo de ejecución diferente al de Cargo. Una de las diferencias es la ejecución en paralelo de los tests. Es un proyecto que recibe actualizaciones con frecuencia y dispone de mecanismos de seguridad.
+
+### Elección
+Por lo que se ha expuesto anteriormente, la herramienta de testing que se ha decidido usar es cargo-nextest ya que, además de cumplir con todos los criterios de selección como también lo hace Cargo, es mucho más eficiente que Cargo y, por tanto, nos permitirá ahorrar tiempo en la ejecución de los tests.
