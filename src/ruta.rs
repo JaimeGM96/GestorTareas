@@ -12,10 +12,10 @@ type NumLinea = i32;
  * 
  * Entidad, al estar unequivocamente identificado.
  */
-struct Linea {
-	id: NumLinea,
-	paradas: Vec<NumParada>,
-	horarios: Map<NumParada, Vec<NaiveTime>>,
+pub struct Linea {
+	pub id: NumLinea,
+	pub paradas: Vec<NumParada>,
+	pub horarios: Map<NumParada, Vec<NaiveTime>>,
 }
 
 /**
@@ -24,10 +24,10 @@ struct Linea {
  * Objeto valor, al ser inmutable y no estar
  * identificado unequivocamente.
  */
-struct Transbordo {
-	linea: NumLinea,
-	parada: NumParada,
-	hora: NaiveTime,
+pub struct Transbordo {
+	pub linea: NumLinea,
+	pub parada: NumParada,
+	pub hora: NaiveTime,
 }
 
 /**
@@ -43,21 +43,28 @@ type Ruta = Vec<Transbordo>;
  * Objeto valor, al ser inmutable y no estar
  * identificado unequivocamente.
  */
-struct BuscadorRutas {
-	lineas: Map<NumLinea, Linea>,
-	paradas: Map<NumParada, Vec<NumLinea>>,
+pub struct BuscadorRutas {
+	pub lineas: Map<NumLinea, Linea>,
+	pub paradas: Map<NumParada, Vec<NumLinea>>,
 }
 
 impl BuscadorRutas {
-	pub fn new(lineas: Vec<Linea>) -> Self {
-		Self {
+	pub fn new(lineas: Vec<Linea>, paradas: Map<NumParada, Vec<NumLinea>>) -> Self {
+		let mut buscador = Self {
 			lineas: Map::new(),
-			paradas: Map::new(),
+			paradas,
+		};
+
+		for linea in lineas {
+			buscador.lineas.insert(linea.id, linea);
 		}
+
+		buscador
 	}
 
 	pub fn encuentra(hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Vec<Ruta>> {
 		// lista de todas las posibles rutas desde parada_origen hasta parada_destino a partir de una hora en concreto
+		//Para una linea que cubre la parada origen y la parada destino
 		None
 	}
 }
