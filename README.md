@@ -21,7 +21,7 @@ cargo check
 ## Ejecución de las pruebas
 Para comprobar que el código funciona correctamente, se puede ejecutar el siguiente comando:
 ```bash
-cargo check test
+cargo test
 ```
 
 ## Documentación
