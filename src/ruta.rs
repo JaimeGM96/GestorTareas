@@ -62,10 +62,44 @@ impl BuscadorRutas {
 		buscador
 	}
 
-	pub fn encuentra(hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Vec<Ruta>> {
-		// lista de todas las posibles rutas desde parada_origen hasta parada_destino a partir de una hora en concreto
-		//Para una linea que cubre la parada origen y la parada destino
-		None
+	pub fn encuentra_ruta_linea(&self, hora_salida: NaiveTime, linea: NumLinea, parada_origen: NumParada, parada_destino: NumParada) -> Option<Ruta> {
+		let mut ruta = Vec::new();
+		let mut hora = hora_salida;
+
+		for parada in &self.lineas.get(&linea)?.paradas {
+			let horarios = self.lineas.get(&linea)?.horarios.get(&parada)?;
+			let mut hora_parada = None;
+
+			for horario in horarios {
+				if *horario >= hora {
+					hora_parada = Some(*horario);
+					break;
+				}
+			}
+
+			let hora_parada = hora_parada?;
+
+			ruta.push(Transbordo {
+				linea,
+				parada: *parada,
+				hora: hora_parada,
+			});
+
+			hora = hora_parada;
+		}
+
+		Some(ruta)
+	}
+
+	pub fn encuentra(&self, hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Vec<Ruta>> {
+		let mut rutas_encontradas = Vec::new();
+
+		for linea in self.paradas.get(&parada_origen)? {
+			let ruta = self.encuentra_ruta_linea(hora_salida, *linea, parada_origen, parada_destino)?;
+			rutas_encontradas.push(ruta);
+		}
+
+		Some(rutas_encontradas)
 	}
 }
 
