@@ -53,4 +53,29 @@ mod tests {
         assert_eq!(buscador_rutas.lineas.len(), 1);
         assert_eq!(buscador_rutas.paradas.len(), 2);
     }
+
+    #[test]
+    pub fn test_given_a_buscador_rutas_can_get_rutas() {
+        let mut horarios = Map::new();
+        horarios.insert(101, vec![NaiveTime::from_hms(7, 0, 0)]);
+        horarios.insert(102, vec![NaiveTime::from_hms(7, 10, 0)]);
+        horarios.insert(103, vec![NaiveTime::from_hms(7, 20, 0)]);
+
+
+        let linea = Linea {
+            id: 1,
+            paradas: vec![101, 102, 103],
+            horarios: horarios,
+        };
+
+        let mut paradas = Map::new();
+        paradas.insert(101, vec![1]);
+        paradas.insert(102, vec![1, 2]);
+
+        let buscador_rutas = BuscadorRutas::new(vec![linea], paradas);
+
+        let rutas = buscador_rutas.encuentra(NaiveTime::from_hms(7, 0, 0), 101, 103);
+
+        assert_eq!(rutas.unwrap().len(), 1);
+    }
 }
