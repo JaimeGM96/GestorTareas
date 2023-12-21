@@ -18,6 +18,12 @@ Para comprobar que la sintaxis es correcta, se puede ejecutar el siguiente coman
 cargo check
 ```
 
+## Ejecución de las pruebas
+Para comprobar que el código funciona correctamente, se puede ejecutar el siguiente comando:
+```bash
+cargo check test
+```
+
 ## Documentación
 - [Configuración de git](docs/configuracion-git.md).
 - [Usuarios de la aplicación](docs/usuarios.md).
