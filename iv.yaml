@@ -3,3 +3,4 @@ entidad: src/ruta.rs
 automatizar:
   fichero: Cargo.toml
   orden: cargo check
+test: tests/test_ruta.rs
