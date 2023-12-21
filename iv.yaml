@@ -2,5 +2,5 @@ lenguaje: Rust
 entidad: src/ruta.rs
 automatizar:
   fichero: Cargo.toml
-  orden: cargo check
+  orden: cargo
 test: tests/tests_ruta.rs
