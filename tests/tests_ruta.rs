@@ -55,6 +55,42 @@ mod tests {
     }
 
     #[test]
+    fn test_a_buscador_rutas_cannot_be_created_without_paradas() {
+        let horarios = Map::new();
+
+        let linea = Linea {
+            id: 1,
+            paradas: vec![101, 102, 103],
+            horarios: horarios,
+        };
+
+        let paradas = Map::new();
+
+        let buscador_rutas = BuscadorRutas::new(vec![linea], paradas);
+
+        assert_eq!(buscador_rutas.err(), Some("No se puede crear un buscador de rutas sin paradas"));
+    }
+
+    #[test]
+    fn test_a_buscador_rutas_cannot_be_created_without_lineas() {
+        let horarios = Map::new();
+
+        let linea = Linea {
+            id: 1,
+            paradas: vec![101, 102, 103],
+            horarios: horarios,
+        };
+
+        let mut paradas = Map::new();
+        paradas.insert(101, vec![1]);
+        paradas.insert(102, vec![1, 2]);
+
+        let buscador_rutas = BuscadorRutas::new(vec![], paradas);
+
+        assert_eq!(buscador_rutas.err(), Some("No se puede crear un buscador de rutas sin lineas"));
+    }
+
+    #[test]
     pub fn test_given_a_buscador_rutas_can_get_rutas() {
         let mut horarios = Map::new();
         horarios.insert(101, vec![NaiveTime::from_hms(7, 0, 0)]);
