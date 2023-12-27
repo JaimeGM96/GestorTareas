@@ -3,6 +3,7 @@
 
 use std::collections::HashMap as Map;
 use chrono::NaiveTime;
+use std::result::Result;
 
 type NumParada = i32;
 type NumLinea = i32;
@@ -49,7 +50,15 @@ pub struct BuscadorRutas {
 }
 
 impl BuscadorRutas {
-	pub fn new(lineas: Vec<Linea>, paradas: Map<NumParada, Vec<NumLinea>>) -> Self {
+	pub fn new(lineas: Vec<Linea>, paradas: Map<NumParada, Vec<NumLinea>>) -> Result<Self, &'static str> {
+		if lineas.len() == 0 {
+			return Err("No se puede crear un buscador de rutas sin lineas");
+		}
+
+		if paradas.len() == 0 {
+			return Err("No se puede crear un buscador de rutas sin paradas");
+		}
+		
 		let mut buscador = Self {
 			lineas: Map::new(),
 			paradas,
@@ -59,7 +68,7 @@ impl BuscadorRutas {
 			buscador.lineas.insert(linea.id, linea);
 		}
 
-		buscador
+		Ok(buscador)
 	}
 
 	pub fn encuentra_ruta_linea(&self, hora_salida: NaiveTime, linea: NumLinea, parada_origen: NumParada, parada_destino: NumParada) -> Option<Ruta> {
