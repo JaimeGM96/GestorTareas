@@ -48,7 +48,7 @@ mod tests {
         paradas.insert(101, vec![1]);
         paradas.insert(102, vec![1, 2]);
 
-        let buscador_rutas = BuscadorRutas::new(vec![linea], paradas);
+        let buscador_rutas = BuscadorRutas::new(vec![linea], paradas).unwrap();
 
         assert_eq!(buscador_rutas.lineas.len(), 1);
         assert_eq!(buscador_rutas.paradas.len(), 2);
@@ -74,7 +74,7 @@ mod tests {
 
         let buscador_rutas = BuscadorRutas::new(vec![linea], paradas);
 
-        let rutas = buscador_rutas.encuentra(NaiveTime::from_hms(7, 0, 0), 101, 103);
+        let rutas = buscador_rutas.unwrap().encuentra(NaiveTime::from_hms(7, 0, 0), 101, 103);
 
         assert_eq!(rutas.unwrap().len(), 1);
     }
