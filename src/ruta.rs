@@ -5,8 +5,8 @@ use std::collections::HashMap as Map;
 use chrono::NaiveTime;
 use std::result::Result;
 
-type NumParada = i32;
-type NumLinea = i32;
+type NumParada = i64;
+type NumLinea = i64;
 
 /**
  * Linea de autobús (en un único sentido).
