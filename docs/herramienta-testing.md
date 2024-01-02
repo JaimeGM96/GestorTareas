@@ -25,5 +25,11 @@ Cargo dispone de su propio test runner. Como hemos visto antes, es la herramient
 ### [cargo-nextest](https://nexte.st/)
 Cargo-nextest es un test runner que amplía las funcionalidades de Cargo para la ejecución, validación y visualización de los tests. Es 3 veces más rápido que Cargo porque tiene un modelo de ejecución diferente al de Cargo. Una de las diferencias es la ejecución en paralelo de los tests. Es un proyecto que recibe actualizaciones con frecuencia y dispone de mecanismos de seguridad.
 
+### [Proptest](https://lib.rs/crates/proptest)
+Proptest es un framework de testing que nos permite probar que, para entradas arbitrarias en nuestros tests, se cumplan ciertas propiedades. Está basado en el framework QuickCheck de Haskell y en Hypothesis de Python. La última versión estable es de 2020, aunque se siguen haciendo actualizaciones en el repositorio.
+
+### [Trybuild](https://lib.rs/crates/trybuild)
+Trybuild hace uso del compilador de Rust (rustc) para comprobar que los mensajes de error que se muestran al compilar el código son los esperados. Se escriben casos de prueba que desencadenan errores y se comprueban que son los esperados. La última versión estable es de diciembre de 2023. 
+
 ### Elección
 Por lo que se ha expuesto anteriormente, la herramienta de testing que se ha decidido usar es cargo-nextest ya que, además de cumplir con todos los criterios de selección como también lo hace Cargo, es mucho más eficiente que Cargo y, por tanto, nos permitirá ahorrar tiempo en la ejecución de los tests.
