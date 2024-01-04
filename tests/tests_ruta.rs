@@ -5,11 +5,32 @@ mod tests {
     use std::collections::HashMap as Map; 
     use std::fs;
 
-    fn create_linea(paradas: Vec<i64>) -> Linea {
+    fn get_json() -> serde_json::Value {
         let file: String = fs::read_to_string("data/data.json").expect("Failed to read file");
-        let mut json: serde_json::Value = serde_json::from_str(&file).expect("JSON was not well-formatted");
+        let json: serde_json::Value = serde_json::from_str(&file).expect("JSON was not well-formatted");
 
-        let id_linea = json["lineas"][0]["id"].take().as_i64().unwrap();
+        json
+    }
+
+    fn get_horario_from_parada(mut json: serde_json::Value, parada: i64) -> NaiveTime {
+        let horas = json["lineas"][0]["horarios"][parada.to_string()]["horas"].take().as_i64().unwrap() as u32;
+        let minutos = json["lineas"][0]["horarios"][parada.to_string()]["minutos"].take().as_i64().unwrap() as u32;
+        let segundos = json["lineas"][0]["horarios"][parada.to_string()]["segundos"].take().as_i64().unwrap() as u32;
+
+        NaiveTime::from_hms(
+            horas,
+            minutos,
+            segundos
+        )
+    }
+
+    fn get_id_linea(mut json: serde_json::Value) -> i64 {
+        json["lineas"][0]["id"].take().as_i64().unwrap()
+    }
+
+    fn create_linea(paradas: Vec<i64>) -> Linea {
+        let mut json = get_json();
+        let id_linea = get_id_linea(json.clone());
         let binding = json["lineas"][0]["paradas"].take();
         let paradas_json = binding.as_array().unwrap();
         let primera_parada = paradas_json[0].as_i64().unwrap();
@@ -19,15 +40,9 @@ mod tests {
         let mut horarios = Map::new();
 
         for parada in &paradas {
-            let hora = json["lineas"][0]["horarios"][parada.to_string()]["horas"].take().as_i64().unwrap() as u32;
-            let minuto = json["lineas"][0]["horarios"][parada.to_string()]["minutos"].take().as_i64().unwrap() as u32;
-            let segundo = json["lineas"][0]["horarios"][parada.to_string()]["segundos"].take().as_i64().unwrap() as u32;
+            let horario = get_horario_from_parada(json.clone(), *parada);
 
-            horarios.insert(*parada, vec![NaiveTime::from_hms(
-                hora,
-                minuto,
-                segundo
-            )]);
+            horarios.insert(*parada, vec![horario]);
         }
 
         let linea = Linea {
@@ -54,32 +69,20 @@ mod tests {
 
     #[test]
     fn test_a_transbordo_can_be_created() {
-        let file: String = fs::read_to_string("data/data.json").expect("Failed to read file");
-        let mut json: serde_json::Value = serde_json::from_str(&file).expect("JSON was not well-formatted");
-
-        let id_linea = json["lineas"][0]["id"].take().as_i64().unwrap();
+        let mut json = get_json();
+        let id_linea = get_id_linea(json.clone());
         let parada = json["lineas"][0]["paradas"].take().as_array().unwrap()[0].as_i64().unwrap();
-        let horas = json["lineas"][0]["horarios"]["101"]["horas"].take().as_i64().unwrap() as u32;
-        let minutos = json["lineas"][0]["horarios"]["101"]["minutos"].take().as_i64().unwrap() as u32;
-        let segundos = json["lineas"][0]["horarios"]["101"]["segundos"].take().as_i64().unwrap() as u32;
+        let horario = get_horario_from_parada(json, 101);
 
         let transbordo = Transbordo {
             linea: id_linea,
             parada: parada,
-            hora: NaiveTime::from_hms(
-                horas,
-                minutos,
-                segundos
-            ),
+            hora: horario,
         };
 
         assert_eq!(transbordo.linea, id_linea);
         assert_eq!(transbordo.parada, parada);
-        assert_eq!(transbordo.hora, NaiveTime::from_hms(
-            horas,
-            minutos,
-            segundos
-        ));
+        assert_eq!(transbordo.hora, horario);
     }
 
     #[test]
