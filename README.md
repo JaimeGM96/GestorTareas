@@ -31,3 +31,5 @@ cargo test
 - [Milestones](docs/milestones.md).
 - [Gestor de dependencias](docs/gestor-dependencias.md).
 - [Gestor de tareas](docs/gestor-tareas.md).
+- [Herramientas de testing](docs/herramienta-testing.md).
+- [Imagen del contenedor](docs/imagen-contenedor.md).
