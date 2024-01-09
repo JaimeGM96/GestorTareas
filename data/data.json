@@ -1,0 +1,30 @@
+{
+    "lineas": [
+        {
+            "id": 1,
+            "paradas": [101, 102, 103],
+            "horarios": {
+                "101": {
+                    "horas": 7,
+                    "minutos": 0,
+                    "segundos": 0
+                },
+                "102": {
+                    "horas": 7,
+                    "minutos": 10,
+                    "segundos": 0
+                },
+                "103": {
+                    "horas": 7,
+                    "minutos": 20,
+                    "segundos": 0
+                }
+            }
+        }
+    ],
+    "paradas": {
+        "101": [1],
+        "102": [1, 2],
+        "103": [3]
+    }
+}

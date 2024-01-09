@@ -3,19 +3,20 @@
 
 use std::collections::HashMap as Map;
 use chrono::NaiveTime;
+use std::result::Result;
 
-type NumParada = i32;
-type NumLinea = i32;
+type NumParada = i64;
+type NumLinea = i64;
 
 /**
  * Linea de autobús (en un único sentido).
  * 
  * Entidad, al estar unequivocamente identificado.
  */
-struct Linea {
-	id: NumLinea,
-	paradas: Vec<NumParada>,
-	horarios: Map<NumParada, Vec<NaiveTime>>,
+pub struct Linea {
+	pub id: NumLinea,
+	pub paradas: Vec<NumParada>,
+	pub horarios: Map<NumParada, Vec<NaiveTime>>,
 }
 
 /**
@@ -24,10 +25,10 @@ struct Linea {
  * Objeto valor, al ser inmutable y no estar
  * identificado unequivocamente.
  */
-struct Transbordo {
-	linea: NumLinea,
-	parada: NumParada,
-	hora: NaiveTime,
+pub struct Transbordo {
+	pub linea: NumLinea,
+	pub parada: NumParada,
+	pub hora: NaiveTime,
 }
 
 /**
@@ -43,22 +44,71 @@ type Ruta = Vec<Transbordo>;
  * Objeto valor, al ser inmutable y no estar
  * identificado unequivocamente.
  */
-struct BuscadorRutas {
-	lineas: Map<NumLinea, Linea>,
-	paradas: Map<NumParada, Vec<NumLinea>>,
+pub struct BuscadorRutas {
+	pub lineas: Map<NumLinea, Linea>,
+	pub paradas: Map<NumParada, Vec<NumLinea>>,
 }
 
 impl BuscadorRutas {
-	pub fn new(lineas: Vec<Linea>) -> Self {
-		Self {
-			lineas: Map::new(),
-			paradas: Map::new(),
+	pub fn new(lineas: Vec<Linea>, paradas: Map<NumParada, Vec<NumLinea>>) -> Result<Self, &'static str> {
+		if lineas.len() == 0 {
+			return Err("No se puede crear un buscador de rutas sin lineas");
 		}
+
+		if paradas.len() == 0 {
+			return Err("No se puede crear un buscador de rutas sin paradas");
+		}
+		
+		let mut buscador = Self {
+			lineas: Map::new(),
+			paradas,
+		};
+
+		for linea in lineas {
+			buscador.lineas.insert(linea.id, linea);
+		}
+
+		Ok(buscador)
 	}
 
-	pub fn encuentra(hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Vec<Ruta>> {
-		// lista de todas las posibles rutas desde parada_origen hasta parada_destino a partir de una hora en concreto
-		None
+	pub fn encuentra_ruta_linea(&self, hora_salida: NaiveTime, linea: NumLinea, parada_origen: NumParada, parada_destino: NumParada) -> Option<Ruta> {
+		let mut ruta = Vec::new();
+		let mut hora = hora_salida;
+
+		for parada in &self.lineas.get(&linea)?.paradas {
+			let horarios = self.lineas.get(&linea)?.horarios.get(&parada)?;
+			let mut hora_parada = None;
+
+			for horario in horarios {
+				if *horario >= hora {
+					hora_parada = Some(*horario);
+					break;
+				}
+			}
+
+			let hora_parada = hora_parada?;
+
+			ruta.push(Transbordo {
+				linea,
+				parada: *parada,
+				hora: hora_parada,
+			});
+
+			hora = hora_parada;
+		}
+
+		Some(ruta)
+	}
+
+	pub fn encuentra(&self, hora_salida: NaiveTime, parada_origen: NumParada, parada_destino: NumParada) -> Option<Vec<Ruta>> {
+		let mut rutas_encontradas = Vec::new();
+
+		for linea in self.paradas.get(&parada_origen)? {
+			let ruta = self.encuentra_ruta_linea(hora_salida, *linea, parada_origen, parada_destino)?;
+			rutas_encontradas.push(ruta);
+		}
+
+		Some(rutas_encontradas)
 	}
 }
 
