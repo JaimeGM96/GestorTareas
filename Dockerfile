@@ -4,7 +4,7 @@ LABEL maintainer="JaimeGM96" version="1.1"
 
 WORKDIR /app/test
 
-COPY Cargo.toml .
+COPY Cargo.toml Cargo.lock ./
 
 RUN adduser -D jaime \
     && chown -R jaime:jaime /app/test
@@ -14,4 +14,4 @@ RUN mkdir src \
     && echo "// dummy file" > src/ruta.rs \
     && cargo build
 
-ENTRYPOINT [ "cargo", "test" ]
+ENTRYPOINT [ "cargo", "build", "&&", "cargo", "test" ]
