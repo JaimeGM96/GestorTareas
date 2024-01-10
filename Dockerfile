@@ -1,6 +1,6 @@
 FROM rust:alpine3.19
 
-LABEL maintainer="JaimeGM96" version="1.1"
+LABEL maintainer="JaimeGM96" version="1.2"
 
 WORKDIR /app/test
 
