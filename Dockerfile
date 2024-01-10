@@ -7,11 +7,14 @@ WORKDIR /app/test
 COPY Cargo.toml Cargo.lock ./
 
 RUN adduser -D jaime \
-    && chown -R jaime:jaime /app/test
+    && chown -R jaime:jaime /app/
 USER jaime
 
-RUN mkdir src \
-    && echo "// dummy file" > src/ruta.rs \
-    && cargo build
+RUN mkdir -p /app/src \
+	&& touch /app/src/main.rs \
+	&& cargo update \
+	&& rm -rf /app/src \
+	&& ln -s /app/test/src /app/src
 
-ENTRYPOINT [ "cargo", "build", "&&", "cargo", "test" ]
+ENV CARGO_TARGET_DIR=/tmp/cache/
+ENTRYPOINT [ "cargo", "test" ]
