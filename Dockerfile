@@ -4,8 +4,6 @@ LABEL maintainer="JaimeGM96" version="1.1"
 
 WORKDIR /app/test
 
-RUN cargo clean
-
 COPY Cargo.toml .
 
 RUN adduser -D jaime \
