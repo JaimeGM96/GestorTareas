@@ -4,7 +4,7 @@ LABEL maintainer="JaimeGM96" version="1.1"
 
 WORKDIR /app/test
 
-COPY Cargo.toml .
+COPY Cargo.toml Cargo.lock ./
 
 RUN adduser -D jaime \
     && chown -R jaime:jaime /app/test
