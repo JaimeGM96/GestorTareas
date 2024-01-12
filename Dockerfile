@@ -1,4 +1,4 @@
-FROM rust:alpine3.19
+FROM rust:alpine
 
 LABEL maintainer="JaimeGM96" version="1.2"
 
