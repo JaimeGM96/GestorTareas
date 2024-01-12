@@ -6,9 +6,9 @@ WORKDIR /app/test
 
 COPY Cargo.toml Cargo.lock /app/
 
-RUN adduser -D jaime \
-    && chown -R jaime:jaime /app/
-USER jaime
+RUN adduser -D jdoc \
+    && chown -R jdoc:jdoc /app/
+USER jdoc
 
 RUN mkdir -p /app/src \
 	&& touch /app/src/main.rs \
