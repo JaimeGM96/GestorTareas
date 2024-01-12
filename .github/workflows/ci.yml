@@ -5,6 +5,7 @@ on:
     paths:
       - 'Dockerfile'
       - 'Cargo.toml'
+      - 'Cargo.lock'
 
 jobs:
   build:
