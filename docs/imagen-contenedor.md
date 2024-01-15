@@ -13,16 +13,16 @@ Los criterios de selección que se van a tener en cuenta son los siguientes:
 Existen diferentes imágenes que nos permiten crear un contenedor con Rust, tanto oficiales y no oficiales. A continuación, se van a exponer las imágenes que se han estudiado para ver cual se adapta mejor a los criterios de selección.
 
 ### [Rust-alpine](https://hub.docker.com/_/rust)
-Es la imágen oficial de Rust sobre Alpine Linux. Es una imagen muy ligera pero, de entre las opciones oficiales, es la que mayor tamaño tiene. Como podemos ver en docker hub, es la más segura de todas ya que no se han encontrado vulnerabilidades.
+Es la imágen oficial de Rust sobre Alpine Linux. Es una imagen ligera, 262MB comprimida, y una vez montada con las dependencias pesa 824MB. En cuanto a la eficiencia, el tiempo de contruir la imagen es de 18.7 segundos y el tiempo de ejecución es de 6 segundos. Como podemos ver en docker hub, es la más segura de todas ya que no se han encontrado vulnerabilidades. Al se una imagen oficial, ésta recibe mantenimiento con bastante frecuencia.
 
 ### [Rust-slim-bullseye](https://hub.docker.com/_/rust)
-Es la imágen oficial de Rust sobre Debian Bullseye. Esta imagen es más ligera que la de Alpine pero al contrario que con la anterior, si se han encontrado vulnerabilidades.
+Es la imágen oficial de Rust sobre Debian Bullseye. Esta imagen es más ligera que la anterior, 256MB comprimida, y una vez montada con las dependencias pesa 761MB. En cuanto a la eficiencia, es parecida a la imagen anterior, rebajando a los 5 segundos el tiempo de ejecución. Tiene vulnerabilidades aunque son de baja prioridad, aunque su número es elevado. Al se una imagen oficial, ésta recibe mantenimiento con bastante frecuencia.
 
 ### [Rust-slim-buster](https://hub.docker.com/_/rust)
-Es la imágen oficial de Rust sobre Debian Buster. De las imágenes oficiales, es la más ligera. La diferencia con la anterior no es muy significativa en cuanto a tamaño pero si que dispone de un aumento bastante significativo en las vulnerabilidades.
+Es la imágen oficial de Rust sobre Debian Buster. De las imágenes oficiales, es la más ligera con 238MB comprimida, y una vez montada con las dependencias pesa 712MB. En cuanto a la eficiencia, sigue mejorando con respecto a la anterior, rebajando el tiempo de ejecución a los 4 segundos. Es la que mayor número de vulnerabilidades tiene, aunque todas son de baja prioridad. También recibe mantenimiento frecuente al ser una imagen oficial.
 
 ### [cimg/rust](https://hub.docker.com/r/cimg/rust)
-Es una imagen no oficial de Rust. Es la más pesada de todas ya que dispone de multitud de librerías que las otras no traen de serie. 
+Es una imagen no oficial de Rust. El tamaño sin comprimir es considerablemente más grande incluso es mayor que las imagenes anteriores ya montadas. También tarda más tiempo en construirse y en ejecutarse. No tiene vulnerabilidades aunque si que recibe mantenimiento con bastante frecuencia.
 
 ## Elección
-La imagen que se va a elegir es la de Alpine. Cumple con todos los criterios de selección y, aunque no sea la más ligera de todas, es mucho más segura que las demás. 
+La imagen por la que se va a optar es la de Debian slim buster. A pesar de sus vulnerabilidades, no son tan importantes y lo compensa el tiempo de ejecución y el tamaño que ocupa. Y como ya hemos visto, cumple con el resto de criterios de selección.

@@ -1,4 +1,4 @@
-FROM rust:alpine
+FROM rust:slim-buster
 
 LABEL maintainer="JaimeGM96" version="1.2"
 
@@ -6,7 +6,7 @@ WORKDIR /app/test
 
 COPY Cargo.toml Cargo.lock /app/
 
-RUN adduser -D jdoc \
+RUN adduser jdoc \
     && chown -R jdoc:jdoc /app/
 USER jdoc
 
